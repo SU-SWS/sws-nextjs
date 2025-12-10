@@ -1,102 +1,20 @@
+name: Lint
+on:
+  push:
+  # pull_request:
 
-name: Build & Lint
-on: [push]
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
   lint:
-    name: Lint & TS Check
     runs-on: ubuntu-latest
-    container:
-      image: node:20
-      env:
-        NEXT_PUBLIC_DRUPAL_BASE_URL: http://localhost
     steps:
-      - uses: actions/checkout@v4
-      - name: Restore Cache
-        uses: actions/cache@v4
+      - uses: actions/checkout@v3
+      - name: Set the correct Node version using nvm
+        shell: bash -l {0}
+        run: nvm install
+      - uses: bahmutov/npm-install@v1
         with:
-          path: |
-            node_modules
-            .next
-          key: lint-${{ hashFiles('package.json') }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            lint-${{ hashFiles('package.json') }}-${{ hashFiles('yarn.lock') }}
-            lint-${{ hashFiles('package.json') }}-
+          useLockFile: false
       - name: Lint
-        run: |
-          yarn
-          yarn next telemetry disable
-          yarn lint
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    container:
-      image: pookmish/drupal8ci:php8.3
-      env:
-        BUILD_PAGES: 100
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_DATABASE: drupal
-          MYSQL_USER: drupal
-          MYSQL_PASSWORD: drupal
-          MYSQL_ROOT_PASSWORD: drupal
-        ports:
-          - 33306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    steps:
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-          if_key_exists: fail
-      - uses: actions/checkout@v4
-        with:
-          repository: "SU-SWS/ace-stanfordlagunita"
-          ref: '3.x'
-      - uses: actions/checkout@v4
-        with:
-          path: frontend
-      - name: Restore Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            vendor
-            docroot/core
-            docroot/libraries
-            docroot/modules/contrib
-            frontend/node_modules
-          key: build-${{ hashFiles('drush/drush.yml') }}-${{ hashFiles('composer.json') }}-${{ hashFiles('composer.lock') }}
-          restore-keys: |
-            build-${{ hashFiles('drush/drush.yml') }}-${{ hashFiles('composer.json') }}-${{ hashFiles('composer.lock') }}
-            build-${{ hashFiles('drush/drush.yml') }}-${{ hashFiles('composer.json') }}-
-            build-${{ hashFiles('drush/drush.yml') }}-
-      - name: Sync Site
-        run: |
-          git config --system --add safe.directory '*' &&
-          mysql -h mysql -P 3306 -u root -pdrupal -e 'SET GLOBAL max_allowed_packet=67108864;' &&
-          rm -rf /var/www/html &&
-          ln -snf $GITHUB_WORKSPACE /var/www/html &&
-          mkdir -p docroot/sites/default/files &&
-          chmod -R 777 docroot/sites/default/files/ &&
-          rm -rf docroot/sites/anes/files &&
-          ln -sL ../default/files/ docroot/sites/anes/files &&
-          apachectl stop && apachectl start &&
-          composer install -n &&
-          drush drupal:sync --site=anes -n &&
-          drush sqlq 'truncate config_pages__su_site_algolia_index; truncate config_pages__su_site_algolia_key; truncate config_pages__su_site_algolia_id'
-      - name: Build Frontend
-        run: |
-          cd $GITHUB_WORKSPACE/frontend &&
-          cp .env.example .env.local &&
-          sed -i -r "s|NEXT_PUBLIC_DRUPAL_BASE_URL.*|NEXT_PUBLIC_DRUPAL_BASE_URL=http://localhost|g" .env.local &&
-          cd $GITHUB_WORKSPACE &&
-          drush su-next-connect >> $GITHUB_WORKSPACE/frontend/.env.local &&
-          cd $GITHUB_WORKSPACE/frontend &&
-          yarn &&
-          yarn build
+        run: npm run lint
+      - name: Typecheck
+        run: npm run tsc
