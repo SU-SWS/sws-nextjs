@@ -1,4 +1,4 @@
-@import 'decanter';
+@import 'decanter/src/css/index-base16.css';
 
 @theme {
   --font-sans: var(--font-source-sans);
