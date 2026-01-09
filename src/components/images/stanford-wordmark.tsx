@@ -1,4 +1,4 @@
-import {HtmlHTMLAttributes} from "react"
+import {HtmlHTMLAttributes} from "react";
 
 type Props = HtmlHTMLAttributes<SVGSVGElement> & {
   height?: number
@@ -7,11 +7,11 @@ type Props = HtmlHTMLAttributes<SVGSVGElement> & {
 
 const StanfordWordMark = ({height = 91, width = 426, ...props}: Props) => {
   if (height != 91 && width == 426) {
-    width *= height / 91
+    width *= height / 91;
   }
 
   if (height == 91 && width != 426) {
-    height *= width / 426
+    height *= width / 426;
   }
 
   return (
@@ -89,7 +89,7 @@ const StanfordWordMark = ({height = 91, width = 426, ...props}: Props) => {
         />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default StanfordWordMark
+export default StanfordWordMark;

@@ -1,7 +1,3 @@
-
-import twMerge from "@lib/utils/twMerge";
-
-
 const LocalFooter = () => {
 
   return (

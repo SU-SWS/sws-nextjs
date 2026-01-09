@@ -1,26 +1,22 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import next from "eslint-config-next";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Global ignores from .eslintignore
-  globalIgnores([
-    // Default Next.js ignores
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-    // Custom ignores
-    "node_modules/**",
-    "tailwind/**",
-    "postcss.config.js",
-    "*.min.js",
-    "*.test.js",
-  ]),
-  // Custom rules from .eslintrc.json
+const customConfig = [
   {
+    ignores: [
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "node_modules/**",
+      "tailwind/**",
+      "postcss.config.js",
+      "*.min.js",
+      "*.test.js",
+    ],
+  },
+  ...next,
+  {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
     rules: {
       "comma-dangle": ["error", {
         objects: "always-multiline",
@@ -33,7 +29,7 @@ const eslintConfig = defineConfig([
       "no-param-reassign": "off",
       "no-redeclare": "off",
       "no-undef": "off",
-      "no-underscore-dangle": "off", // We have _uid from Storyblok that can't be changed
+      "no-underscore-dangle": "off",
       "object-curly-newline": ["error", { consistent: true, minProperties: 4 }],
       "import/extensions": "off",
       "no-shadow": "off",
@@ -66,7 +62,7 @@ const eslintConfig = defineConfig([
       "react/jsx-one-expression-per-line": 0,
       "react/no-unused-prop-types": 0,
       "react/require-default-props": 0,
-      "react/jsx-no-useless-fragment": [2, { allowExpressions: true }], // https://github.com/jsx-eslint/eslint-plugin-react/issues/2584
+      "react/jsx-no-useless-fragment": [2, { allowExpressions: true }],
       "react/jsx-indent": [2, 2],
       "react/display-name": 0,
       "class-methods-use-this": 0,
@@ -85,15 +81,15 @@ const eslintConfig = defineConfig([
       ],
       "import/export": 0,
       "func-names": 0,
-      semi: [1, "always"], // 1 is for warning
+      semi: [1, "always"],
       "@next/next/no-img-element": 0,
     },
     settings: {
       tailwindcss: {
-        callees: ["classnames", "clsx", "ctl", "cva", "tv", "cn", "dcnb", "cnb"], // Tailwind utility class detection for specific libraries
+        callees: ["classnames", "clsx", "ctl", "cva", "tv", "cn", "dcnb", "cnb"],
       },
     },
   },
-]);
+];
 
-export default eslintConfig;
+export default customConfig;
