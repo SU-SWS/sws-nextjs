@@ -9,7 +9,7 @@ const PageFooter = ({...props}: Props) => {
       <LocalFooter />
 
       <div className="bg-cardinal-red py-25 [&_a:is(:hover,:focus)]:text-white [&_a]:text-white [&_a]:no-underline">
-        <div className="centered lg:flex lg:items-start lg:gap-50">
+        <div className="cc lg:flex lg:items-start lg:gap-50">
           <div className="mb-25 text-center">
             <a className="logo type-3 text-white hocus:text-white" href="https://www.stanford.edu">
               Stanford
@@ -19,78 +19,84 @@ const PageFooter = ({...props}: Props) => {
           </div>
           <div className="mx-auto lg:mx-0 [&_a:focus]:underline [&_a:hover]:underline">
             <nav
-              aria-label="University Links"
-              className="mb-13 flex justify-center gap-50 sm:flex-col sm:gap-0 lg:justify-start"
-            >
-              <ul className="list-unstyled justify-center text-2xl sm:flex sm:gap-25 md:text-3xl lg:justify-start">
-                <li>
-                  <a href="https://www.stanford.edu">Stanford Home</a>
+            aria-label="global footer menu"
+            className="mb-10 flex flex-row justify-center sm:flex-col sm:items-center lg:items-start"
+          >
+              <ul className="list-unstyled mb-10 mr-19 flex flex-col p-0 text-15 sm:mb-4 sm:mr-0 sm:flex-row md:text-17 2xl:text-18">
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
+                  <a rel="nofollow" href="https://www.stanford.edu">
+                    Stanford Home
+                  </a>
+                </li>
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
+                  <a rel="nofollow" href="https://visit.stanford.edu/plan/">
+                    {" "}
+                    Maps &amp; Directions
+                  </a>
+                </li>
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
+                  <a rel="nofollow" href="https://www.stanford.edu/search/">
+                    {" "}
+                    Search Stanford
+                  </a>
                 </li>
                 <li>
-                  <a href="https://visit.stanford.edu/plan/">Maps &amp; Directions</a>
-                </li>
-                <li>
-                  <a href="https://www.stanford.edu/search/">Search Stanford</a>
-                </li>
-                <li>
-                  <a href="https://emergency.stanford.edu">Emergency Info</a>
+                  <a rel="nofollow" href="https://emergency.stanford.edu">
+                    {" "}
+                    Emergency Info
+                  </a>
                 </li>
               </ul>
-
-              <ul className="list-unstyled justify-center text-2xl sm:flex sm:gap-25 sm:text-xl lg:justify-start lg:text-3xl">
-                <li>
-                  <a href="https://www.stanford.edu/site/terms/" title="Terms of use for sites" className="font-normal">
+              <ul className="list-unstyled mb-10 ml-19 flex flex-col p-0 text-15 sm:mb-0 sm:ml-0 sm:flex-row sm:text-14 sm:link-regular md:text-15 xl:text-16">
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
+                  <a rel="nofollow" href="https://www.stanford.edu/site/terms/" title="Terms of use for sites">
                     Terms of Use
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="https://www.stanford.edu/site/privacy/"
-                    title="Privacy and cookie policy"
-                    className="font-normal"
-                  >
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
+                  <a rel="nofollow" href="https://www.stanford.edu/site/privacy/" title="Privacy and cookie policy">
                     Privacy
                   </a>
                 </li>
-                <li>
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
                   <a
-                    href="https://uit.stanford.edu/security/copyright-infringement"
-                    title="Report alleged copyright infringement"
-                    className="font-normal"
-                  >
+                  rel="nofollow"
+                  href="https://uit.stanford.edu/security/copyright-infringement"
+                  title="Report alleged copyright infringement"
+                >
                     Copyright
                   </a>
                 </li>
-                <li>
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
                   <a
-                    href="https://adminguide.stanford.edu/chapter-1/subchapter-5/policy-1-5-4"
-                    title="Ownership and use of Stanford trademarks and images"
-                    className="font-normal"
-                  >
+                  rel="nofollow"
+                  href="https://adminguide.stanford.edu/chapter-1/subchapter-5/policy-1-5-4"
+                  title="Ownership and use of Stanford trademarks and images"
+                >
                     Trademarks
                   </a>
                 </li>
-                <li>
+                <li className="sm:mr-10 md:mr-20 lg:mr-27">
                   <a
-                    href="https://bulletin.stanford.edu/pages/c7vDgeOuJIfpZe8GKmW3"
-                    title="Non-discrimination policy"
-                    className="font-normal"
-                  >
+                  rel="nofollow"
+                  href="https://bulletin.stanford.edu/pages/c7vDgeOuJIfpZe8GKmW3"
+                  title="Non-discrimination policy"
+                >
                     Non-Discrimination
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.stanford.edu/site/accessibility"
-                    title="Report web accessibility issues"
-                    className="font-normal"
-                  >
+                  rel="nofollow"
+                  href="https://www.stanford.edu/site/accessibility"
+                  title="Report web accessibility issues"
+                >
                     Accessibility
                   </a>
                 </li>
               </ul>
             </nav>
-            <div className="text-center text-xl text-white lg:text-left">
+            <div className="text-center text-13 sm:text-14 text-white lg:text-left">
               © Stanford University. Stanford, California 94305.
             </div>
           </div>
