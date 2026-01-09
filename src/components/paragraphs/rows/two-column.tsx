@@ -26,7 +26,7 @@ const TwoColumn = ({
   return (
     <div
       className={twMerge(
-        "mb-32",
+        "mb-32 @container",
         clsx({
           gutters: !bg_color,
           "px-5 pb-20 pt-20": !!bg_color,
@@ -46,8 +46,9 @@ const TwoColumn = ({
     >
       <div
         className={twMerge(
-          "centered grid gap-10 @6xl:grid-cols-2 @6xl:gap-20",
+          "centered grid gap-10 @6xl:gap-20",
           clsx({
+            "@6xl:grid-cols-2": !column_widths,
             "@6xl:grid-cols-1-2": column_widths === "33-67",
             "@6xl:grid-cols-2-1": column_widths === "67-33",
           }),
