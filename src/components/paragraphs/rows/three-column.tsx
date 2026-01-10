@@ -26,7 +26,7 @@ const ThreeColumn = ({
   return (
     <div
       className={twMerge(
-        clsx("mb-32", {
+        clsx("mb-32 @container", {
           "px-5 pb-20 pt-20": !!bg_color,
           "pt-0": top_padding === "none",
           "pt-40": top_padding === "more",
@@ -43,7 +43,7 @@ const ThreeColumn = ({
       )}
       data-columns="3"
     >
-      <div className="centered grid gap-10 @4xl:grid-cols-2 @6xl:gap-20 @9xl:grid-cols-3">
+      <div className="centered grid gap-10 @4xl:grid-cols-2 @6xl:gap-38 @6xl:grid-cols-3">
         <OneColumn
           top_padding="none"
           bottom_margin="none"

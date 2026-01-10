@@ -4,7 +4,7 @@ import {clsx} from "clsx";
 import {ReactNode} from "react";
 
 export interface TwoColumnProps extends LayoutProps {
-  column_widths?: "33-67" | "67-33"
+  column_widths?: "33-67" | "67-33" | "40-60"
   vertical_dividers?: boolean
 }
 
@@ -46,9 +46,10 @@ const TwoColumn = ({
     >
       <div
         className={twMerge(
-          "centered grid gap-10 @6xl:gap-20",
+          "centered grid gap-10 @6xl:gap-38",
           clsx({
             "@6xl:grid-cols-2": !column_widths,
+            "@6xl:grid-cols-2-3": column_widths === "40-60",
             "@6xl:grid-cols-1-2": column_widths === "33-67",
             "@6xl:grid-cols-2-1": column_widths === "67-33",
           }),
