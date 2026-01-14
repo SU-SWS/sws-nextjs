@@ -20,12 +20,12 @@ export default function Home() {
       <BgImageWrapper
         src="/images/stanford_dish.jpg"
         hasBgImage
-        bgColor="bg-black"
+        bgColor="primary"
       >
         <TwoColumn
           column_widths="40-60"
           left={
-            <div className="text-white">
+            <div>
               <Text variant="card" className="rs-mb-8">
                 Lasting Partnerships
               </Text>
@@ -51,15 +51,12 @@ export default function Home() {
           }
         />
         <div className="mx-auto w-fit">
-          <ActionLink
-            href="/"
-            className="transition-all ease-in-out duration-500 underline underline-offset-2 decoration-2 text-white decoration-digital-red-light hocus:text-black hocus:bg-white/80 hocus:decoration-black"
-          >
+          <ActionLink href="/" variant="white">
             Learn more about our work
           </ActionLink>
         </div>
       </BgImageWrapper>
-      <BgImageWrapper bgColor="bg-sandstone-light">
+      <BgImageWrapper bgColor="secondary">
         <div className="w-full cc xl:mx-0 xl:p-0 xl:max-w-[1000px]">
           <Text size={4} font="serif">
             Vestibulum massa nibh, fermentum ut orci iaculis, placerat viverra

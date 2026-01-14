@@ -1,9 +1,14 @@
 import { HTMLAttributes } from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
+import {
+  ColorToken,
+  getColorClasses,
+  getBgColorClasses,
+} from "@lib/colorTokens";
 
 type BgImageWrapperProps = HTMLAttributes<HTMLDivElement> & {
-  bgColor?: string;
+  bgColor?: ColorToken;
   hasBgImage?: boolean;
   src?: string;
   alt?: string;
@@ -18,10 +23,13 @@ export const BgImageWrapper = ({
   alt,
   ...props
 }: BgImageWrapperProps) => {
+  const colorClasses = bgColor ? getColorClasses(bgColor) : "";
+  const bgColorClasses = bgColor ? getBgColorClasses(bgColor) : "";
+
   return (
     <div
       {...props}
-      className={clsx("relative rs-mb-5 w-full", bgColor, className)}
+      className={clsx("relative rs-mb-5 w-full", colorClasses, className)}
     >
       <div className="cc rs-pb-7 rs-pt-6">
         {hasBgImage && src && (
@@ -37,16 +45,12 @@ export const BgImageWrapper = ({
             <div
               className={clsx(
                 "absolute size-full opacity-80 z-10 backdrop-blur-sm",
-                bgColor,
+                bgColorClasses,
               )}
             />
           </div>
         )}
-        <div
-          className="relative z-50 w-full"
-        >
-          {children}
-        </div>
+        <div className="relative z-50 w-full">{children}</div>
       </div>
     </div>
   );
