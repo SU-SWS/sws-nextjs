@@ -16,7 +16,9 @@ type Props = HtmlHTMLAttributes<HTMLAnchorElement> & {
   variant?: CtaVariant;
 };
 
-const ActionLink = ({ href, children, variant, ...props }: Props) => {
+const ActionLink = ({
+ href, children, variant, ...props 
+}: Props) => {
   const ctaClasses = variant ? getCtaClasses(variant) : "";
 
   return (

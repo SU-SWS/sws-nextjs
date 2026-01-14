@@ -1,11 +1,11 @@
-import ActionLink from '@components/elements/action-link';
-import { H1, H2 } from '@components/elements/headers';
-import { Text } from '@components/elements/text';
-import GlobalPage from '@components/layouts/global-page';
-import { BgImageWrapper } from '@components/paragraphs/bg-image-section';
-import ThreeColumn from '@components/paragraphs/rows/three-column';
-import TwoColumn from '@components/paragraphs/rows/two-column';
-import Image from 'next/image';
+import ActionLink from "@components/elements/action-link";
+import { H1, H2 } from "@components/elements/headers";
+import { Text } from "@components/elements/text";
+import GlobalPage from "@components/layouts/global-page";
+import { BgImageWrapper } from "@components/paragraphs/bg-image-section";
+import ThreeColumn from "@components/paragraphs/rows/three-column";
+import TwoColumn from "@components/paragraphs/rows/two-column";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <BgImageWrapper
         src="/images/stanford_dish.jpg"
         hasBgImage
-        bgColor="primary"
+        bgColor="primary-dark"
       >
         <TwoColumn
           column_widths="40-60"

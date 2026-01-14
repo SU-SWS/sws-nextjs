@@ -29,7 +29,7 @@ export const BgImageWrapper = ({
   return (
     <div
       {...props}
-      className={clsx("relative rs-mb-5 w-full", colorClasses, className)}
+      className={clsx("relative w-full", colorClasses, className)}
     >
       <div className="cc rs-pb-7 rs-pt-6">
         {hasBgImage && src && (
