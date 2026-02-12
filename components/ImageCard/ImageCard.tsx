@@ -1,0 +1,77 @@
+import twMerge from "@/utilities/utils/twMerge";
+import Image from "next/image";
+import { ElementType, HTMLAttributes } from "react";
+import { clsx } from "clsx";
+
+type Props = HTMLAttributes<HTMLElement | HTMLDivElement> & {
+  /**
+   * Absolute image url path.
+   */
+  imageUrl?: string;
+  /**
+   * Image alt string.
+   */
+  imageAlt?: string;
+  /**
+   * Absolute url for the video, typically an oembed url.
+   */
+  videoUrl?: string;
+  /**
+   * If the wrapper should be an article or a div, use an article if an appropriate heading is within the card.
+   */
+  isArticle?: boolean;
+  /**
+   * If the image aspect ratio should be 1:1 instead of 16:9
+   */
+  squareImage?: boolean;
+};
+
+const ImageCard = ({
+  imageUrl,
+  imageAlt,
+  videoUrl,
+  isArticle,
+  squareImage,
+  children,
+  ...props
+}: Props) => {
+  const CardWrapper: ElementType = isArticle ? "article" : "div";
+
+  return (
+    <CardWrapper
+      {...props}
+      className={twMerge(
+        "centered relative w-full border border-black-10 bg-white shadow-lg xl:max-w-[980px]",
+        props.className,
+      )}
+    >
+      {imageUrl && (
+        <div
+          className={twMerge(
+            "relative w-full",
+            clsx({ "aspect-1": squareImage, "aspect-[16/9]": !squareImage }),
+          )}
+        >
+          <Image
+            className="object-cover object-center"
+            src={imageUrl}
+            alt={imageAlt || ""}
+            fill
+            sizes="(max-width: 768px) 100vw, 1000px"
+          />
+        </div>
+      )}
+      <div className="flex flex-col gap-5 p-10">{children}</div>
+    </CardWrapper>
+  );
+};
+
+export const ImageCardSkeleton = () => {
+  return (
+    <div className="centered w-full border border-black-10 pb-20 shadow-lg xl:max-w-[980px]">
+      <div className="aspect-[16/9] w-full bg-black-10"></div>
+    </div>
+  );
+};
+
+export default ImageCard;

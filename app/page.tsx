@@ -1,10 +1,10 @@
-import ActionLink from "@components/elements/action-link";
-import { H1, H2 } from "@components/elements/headers";
-import { Text } from "@components/elements/text";
-import GlobalPage from "@components/layouts/global-page";
-import { BgImageWrapper } from "@components/paragraphs/bg-image-section";
-import ThreeColumn from "@components/paragraphs/rows/three-column";
-import TwoColumn from "@components/paragraphs/rows/two-column";
+import ActionLink from "@/components/Cta/ActionLink";
+import { H1, H2 } from "@/components/Typography/Headers";
+import { Text } from "@/components/Typography/Text";
+import GlobalPage from "@/components/Layout/GlobalPage";
+import { BgImageWrapper } from "@/components/BgImageSection/BgImageSection";
+import ThreeColumn from "@/components/Row/ThreeColumn";
+import TwoColumn from "@/components/Row/TwoColumn";
 import Image from "next/image";
 
 export default function Home() {

@@ -19,14 +19,14 @@
       }
     ],
     "paths": {
-      "@components/*": [
-        "./src/components/*"
+      "@/components/*": [
+        "./components/*"
       ],
-      "@lib/*": [
-        "./src/lib/*"
+      "@/utilities/*": [
+        "./utilities/*"
       ],
-      "@hooks/*": [
-        "./src/hooks/*"
+      "@/hooks/*": [
+        "./hooks/*"
       ]
     }
   },

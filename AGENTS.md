@@ -141,7 +141,7 @@ export const Component = ({ required, optional, children, ...props }: ComponentP
 **Example:**
 ```typescript
 import {clsx} from "clsx";
-import twMerge from "@lib/utils/twMerge";
+import twMerge from "@/utilities/utils/twMerge";
 
 export const Card = ({ variant, className, children }: CardProps) => (
   <div className={twMerge(
