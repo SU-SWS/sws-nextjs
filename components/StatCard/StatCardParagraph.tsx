@@ -1,5 +1,5 @@
 import { HtmlHTMLAttributes } from "react";
-import { H2, H3, H4 } from "@/components/Typography/Headers";
+import { Heading } from "@/components/Typography/Heading";
 import Link from "@/components/Cta/Link";
 import ReverseVisualOrder from "@/components/ReverseVisualOrder/ReverseVisualOrder";
 import ImageCard from "@/components/ImageCard/ImageCard";
@@ -119,22 +119,11 @@ const StatCardParagraph = ({
       <ReverseVisualOrder>
         {headline && (
           <>
-            {headingLevel === "h2" && (
-              <H2 id={id} className={twMerge("mb-0", headerClasses)}>
+            {headingLevel !== "div" ? (
+              <Heading as={headingLevel} id={id} className={twMerge("mb-0", headerClasses)}>
                 {headline}
-              </H2>
-            )}
-            {headingLevel === "h3" && (
-              <H3 id={id} className={twMerge("mb-0", headerClasses)}>
-                {headline}
-              </H3>
-            )}
-            {headingLevel === "h4" && (
-              <H4 id={id} className={twMerge("mb-0", headerClasses)}>
-                {headline}
-              </H4>
-            )}
-            {headingLevel === "div" && (
+              </Heading>
+            ) : (
               <div className={twMerge("mb-0", headerClasses)}>{headline}</div>
             )}
           </>

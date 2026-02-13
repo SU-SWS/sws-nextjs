@@ -14,9 +14,10 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Enable Corepack
         run: corepack enable
-      - uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
+      - name: Configure git for Yarn
+        run: git config --global core.autocrlf false
+      - name: Install dependencies
+        run: yarn install --immutable
       - name: Lint
         run: yarn lint
       - name: Typecheck

@@ -1,5 +1,5 @@
 import { HtmlHTMLAttributes } from "react";
-import { H2, H3, H4 } from "@/components/Typography/Headers";
+import { Heading } from "@/components/Typography/Heading";
 import ActionLink from "@/components/Cta/ActionLink";
 import Button from "@/components/Cta/Button";
 import ImageCard from "@/components/ImageCard/ImageCard";
@@ -52,22 +52,11 @@ const CardParagraph = ({
     >
       {header && (
         <>
-          {headingLevel === "h2" && (
-            <H2 id={id} className={headerClasses}>
+          {headingLevel !== "div" ? (
+            <Heading as={headingLevel} id={id} className={headerClasses}>
               {header}
-            </H2>
-          )}
-          {headingLevel === "h3" && (
-            <H3 id={id} className={headerClasses}>
-              {header}
-            </H3>
-          )}
-          {headingLevel === "h4" && (
-            <H4 id={id} className={headerClasses}>
-              {header}
-            </H4>
-          )}
-          {headingLevel === "div" && (
+            </Heading>
+          ) : (
             <div className={headerClasses}>{header}</div>
           )}
         </>

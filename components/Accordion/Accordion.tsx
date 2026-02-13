@@ -2,9 +2,7 @@
 
 import { HTMLAttributes, JSX, useId } from "react";
 import { useBoolean } from "usehooks-ts";
-import {
- H2, H3, H4, H5, 
-} from "@/components/Typography/Headers";
+import { Heading } from "@/components/Typography/Heading";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { clsx } from "clsx";
 import twMerge from "@/utilities/utils/twMerge";
@@ -68,27 +66,9 @@ const Accordion = ({
   // When the accordion is externally controlled.
   const isExpanded = onClick ? isVisible : expanded;
 
-  let Heading;
-  switch (headingLevel) {
-    case "h3":
-      Heading = H3;
-      break;
-
-    case "h4":
-      Heading = H4;
-      break;
-
-    case "h5":
-      Heading = H5;
-      break;
-
-    default:
-      Heading = H2;
-  }
-
   return (
     <section aria-labelledby={`${id}-button`} {...props}>
-      <Heading id={`${id}-button`}>
+      <Heading as={headingLevel} id={`${id}-button`}>
         <button
           {...buttonProps}
           className={twMerge(

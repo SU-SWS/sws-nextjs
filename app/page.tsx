@@ -1,22 +1,32 @@
 import ActionLink from "@/components/Cta/ActionLink";
-import { H1, H2 } from "@/components/Typography/Headers";
+import { Heading } from "@/components/Typography/Heading";
 import { Text } from "@/components/Typography/Text";
 import GlobalPage from "@/components/Layout/GlobalPage";
 import { Section } from "@/components/Section/Section";
 import ThreeColumn from "@/components/Row/ThreeColumn";
 import TwoColumn from "@/components/Row/TwoColumn";
 import Image from "next/image";
+import { Container } from "@/components/Container";
+import { Markdown } from "@/components/Markdown/Markdown";
 
 export default function Home() {
   return (
     <GlobalPage>
-      <H1 className="sr-only">Stanford Web Services Home</H1>
-      <div className="w-full cc xl:p-0 xl:mx-auto xl:max-w-[1000px] rs-mt-6 rs-mb-7">
-        <Text size={4} font="serif">
-          Vestibulum massa nibh, fermentum ut orci iaculis, placerat viverra
-          augue. In mauris sapien, vulputate non eros ac, malesuada.
-        </Text>
-      </div>
+      <Heading as="h1" className="sr-only">
+        Stanford Web Services Home
+      </Heading>
+      <Container mb={7} mt={6}>
+        <div className="max-w-900">
+          <Markdown size={2}>{`
+            # Our work
+
+            Donec efficitur lectus dolor, id lobortis nulla posuere
+            vel. Phasellus pulvinar tincidunt tortor, sit amet iaculis nisi
+            dignissim egestas. Morbi cursus, felis id dictum eleifend, urna diam
+            volutpat mi, ac suscipit enim metus ac enim.
+          `}</Markdown>
+        </div>
+      </Container>
       <Section
         src="/images/stanford_dish.jpg"
         hasBgImage
@@ -29,7 +39,9 @@ export default function Home() {
               <Text variant="card" className="rs-mb-8">
                 Lasting Partnerships
               </Text>
-              <H2 className="font-serif font-normal type-3">Momentum</H2>
+              <Heading as="h2" size={3} weight="normal" font="serif">
+                Momentum
+              </Heading>
               <Text>
                 Mauris vel nunc rutrum, semper neque a, venenatis metus. Nulla
                 egestas, enim ut blandit pulvinar, lorem tellus pulvinar ex, a

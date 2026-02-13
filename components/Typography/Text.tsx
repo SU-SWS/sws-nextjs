@@ -1,7 +1,12 @@
 import { ReactNode, TimeHTMLAttributes } from "react";
+import { clsx } from "clsx";
+import {
+  HeroIcon,
+  type HeroIconProps,
+  type IconType,
+} from "@/components/HeroIcon";
 import * as styles from "./typography.styles";
 import * as types from "./typography.types";
-import clsx from "clsx";
 
 export type TypographyProps = {
   as?: types.TextType;
@@ -12,9 +17,15 @@ export type TypographyProps = {
   color?: types.TextColorType;
   variant?: types.TextVariantType;
   leading?: types.FontLeadingType;
+  /**
+   * If true, use default tracking for the font - for Druk and Druk Wide
+   */
+  useDefaultTracking?: boolean;
   italic?: boolean;
   srOnly?: boolean;
   uppercase?: boolean;
+  icon?: IconType;
+  iconProps?: Omit<HeroIconProps, "icon" | "noBaseStyle">;
   className?: string;
   children?: ReactNode;
 };
@@ -25,7 +36,7 @@ export type TextProps = TypographyProps &
   TimeHTMLAttributes<HTMLElement>;
 
 export const Text = ({
-  as: AsComponent = "p",
+  as: AsComponent = "div",
   font = "sans",
   size,
   weight,
@@ -33,13 +44,17 @@ export const Text = ({
   color = "default",
   variant,
   leading,
+  useDefaultTracking,
   italic,
   srOnly,
   uppercase,
+  icon,
+  iconProps,
   className,
   children,
   ...rest
 }: TextProps) => {
+  const { className: iconClasses, ...iProps } = iconProps || {};
 
   return (
     <AsComponent
@@ -55,10 +70,19 @@ export const Text = ({
         italic ? "italic" : "",
         srOnly ? "sr-only" : "",
         uppercase ? "uppercase" : "",
+        useDefaultTracking ? "tracking-normal" : "",
         className,
       )}
     >
       {children}
+      {icon && (
+        <HeroIcon
+          icon={icon}
+          noBaseStyle
+          className={clsx(styles.iconStyle, iconClasses)}
+          {...iProps}
+        />
+      )}
     </AsComponent>
   );
 };
