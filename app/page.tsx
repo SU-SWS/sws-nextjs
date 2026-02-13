@@ -2,7 +2,7 @@ import ActionLink from "@/components/Cta/ActionLink";
 import { H1, H2 } from "@/components/Typography/Headers";
 import { Text } from "@/components/Typography/Text";
 import GlobalPage from "@/components/Layout/GlobalPage";
-import { BgImageWrapper } from "@/components/BgImageSection/BgImageSection";
+import { Section } from "@/components/Section/Section";
 import ThreeColumn from "@/components/Row/ThreeColumn";
 import TwoColumn from "@/components/Row/TwoColumn";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function Home() {
           augue. In mauris sapien, vulputate non eros ac, malesuada.
         </Text>
       </div>
-      <BgImageWrapper
+      <Section
         src="/images/stanford_dish.jpg"
         hasBgImage
         bgColor="primary-dark"
@@ -55,8 +55,8 @@ export default function Home() {
             Learn more about our work
           </ActionLink>
         </div>
-      </BgImageWrapper>
-      <BgImageWrapper bgColor="secondary">
+      </Section>
+      <Section bgColor="secondary">
         <div className="w-full cc xl:mx-0 xl:p-0 xl:max-w-[1000px]">
           <Text size={4} font="serif">
             Vestibulum massa nibh, fermentum ut orci iaculis, placerat viverra
@@ -89,7 +89,7 @@ export default function Home() {
             </Text>
           }
         />
-      </BgImageWrapper>
+      </Section>
     </GlobalPage>
   );
 }

@@ -7,14 +7,14 @@ import {
   getBgColorClasses,
 } from "@/utilities/colorTokens";
 
-type BgImageWrapperProps = HTMLAttributes<HTMLDivElement> & {
+type SectionProps = HTMLAttributes<HTMLDivElement> & {
   bgColor?: ColorToken;
   hasBgImage?: boolean;
   src?: string;
   alt?: string;
 };
 
-export const BgImageWrapper = ({
+export const Section = ({
   className,
   children,
   bgColor,
@@ -22,7 +22,7 @@ export const BgImageWrapper = ({
   src,
   alt,
   ...props
-}: BgImageWrapperProps) => {
+}: SectionProps) => {
   const colorClasses = bgColor ? getColorClasses(bgColor) : "";
   const bgColorClasses = bgColor ? getBgColorClasses(bgColor) : "";
 
